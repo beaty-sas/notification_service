@@ -98,3 +98,8 @@ autouse
 notificator
 sms
 msisdn
+bsg
+sdk
+formatter
+levelname
+jsonlogger
