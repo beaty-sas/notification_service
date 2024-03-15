@@ -30,6 +30,6 @@ jobs:
     - name: Build, Tag and Push Docker image
       run: |
         docker build -t notification .
-        docker tag api ${{ secrets.AWS_NOTIFICATION_REGISTRY }}
+        docker tag notification ${{ secrets.AWS_NOTIFICATION_REGISTRY }}
         docker push ${{ secrets.AWS_NOTIFICATION_REGISTRY }}
 
