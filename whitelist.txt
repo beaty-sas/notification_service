@@ -103,3 +103,4 @@ sdk
 formatter
 levelname
 jsonlogger
+pythonjsonlogger

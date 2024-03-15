@@ -6,7 +6,6 @@ from urllib.parse import urljoin
 
 import httpx
 from httpx import Response
-from pydantic import AnyHttpUrl
 
 from notification_service.conf.settings import settings
 from notification_service.exception import HTTPClientException
@@ -16,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 class BaseHTTPClient:
     EXC_CLASS: Type[HTTPClientException] = HTTPClientException
-    BASE_URL: AnyHttpUrl
+    BASE_URL: str
 
     def __init__(self, base_url: str | None = None, timeout: float = settings.BASE_HTTP_CLIENT_TIMEOUT):
         self.base_url = base_url or self.BASE_URL
@@ -37,8 +36,8 @@ class BaseHTTPClient:
         self._check_response(response)
         return response
 
-    def get_url(self, url) -> str:
-        return urljoin(self.base_url, url)
+    def get_url(self, url: str) -> str:
+        return urljoin(self.base_url, url)  # type: ignore
 
     def get(self, url: str, **kwargs) -> Response:
         return self._request(url, 'GET', **kwargs)

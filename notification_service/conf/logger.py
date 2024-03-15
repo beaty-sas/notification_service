@@ -10,7 +10,7 @@ class BaseJsonFormatter(jsonlogger.JsonFormatter):
         log_record['logger'] = record.name
 
 
-log_level = settings.LOG_LEVEL.value
+log_level = settings.LOG_LEVEL
 
 LOG_CONFIG = {
     'version': 1,

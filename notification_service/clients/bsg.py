@@ -20,7 +20,7 @@ class BSGProvider(BaseHTTPClient):
         return {'X-API-KEY': settings.BSG_API_KEY}
 
     def send_sms(self, destination: str, message: str) -> dict:
-        data = BSGRequestData(
+        data = BSGRequestData(  # type: ignore
             msisdn=destination,
             reference=str(uuid.uuid4()),
             originator=settings.BSG_SENDER_NAME,
