@@ -1,0 +1,3 @@
+[bandit]
+targets: notification_service/
+exclude: test_*.py
