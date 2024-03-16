@@ -11,7 +11,7 @@ RUN curl -sSL https://install.python-poetry.org | python3 -
 ENV PATH=$POETRY_HOME/bin:$PATH
 
 COPY app.py/ ${LAMBDA_TASK_ROOT}/app.py
-COPY notification_service/ ${LAMBDA_TASK_ROOT}/notification
+COPY notification_service/ ${LAMBDA_TASK_ROOT}/notification_service
 COPY pyproject.toml ${LAMBDA_TASK_ROOT}/pyproject.toml
 COPY poetry.lock ${LAMBDA_TASK_ROOT}/poetry.lock
 
