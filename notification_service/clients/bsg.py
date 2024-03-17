@@ -1,4 +1,4 @@
-import uuid
+import time
 
 import httpx
 
@@ -21,8 +21,8 @@ class BSGProvider(BaseHTTPClient):
 
     def send_sms(self, destination: str, message: str) -> dict:
         data = BSGRequestData(  # type: ignore
+            reference=str(int(time.time())),
             msisdn=destination,
-            reference=str(uuid.uuid4()),
             originator=settings.BSG_SENDER_NAME,
             body=message,
         )
