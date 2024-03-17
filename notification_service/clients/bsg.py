@@ -24,11 +24,11 @@ class BSGProvider(BaseHTTPClient):
             reference=str(int(time.time())),
             msisdn=destination,
             originator=settings.BSG_SENDER_NAME,
-            body=message.encode('utf-8').decode(),
-        )
+            body=message.encode('utf-8').decode('unicode_escape'),
+        ).dict(by_alias=True, exclude_none=True)
         response = self.post(
             self.ROUTES.SEND_SMS,
-            json=data.dict(by_alias=True, exclude_none=True),
+            json=data,
             headers=self.headers,
         )
         return response.json()
