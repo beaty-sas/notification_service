@@ -24,7 +24,7 @@ class BSGProvider(BaseHTTPClient):
             reference=str(int(time.time())),
             msisdn=destination,
             originator=settings.BSG_SENDER_NAME,
-            body=message,
+            body=message.encode('utf-8').decode(),
         )
         response = self.post(
             self.ROUTES.SEND_SMS,
