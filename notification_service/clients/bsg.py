@@ -26,7 +26,6 @@ class BSGProvider(BaseHTTPClient):
             originator=settings.BSG_SENDER_NAME,
             body=message,
         ).dict(by_alias=True, exclude_none=True)
-        data['body'] = data['body'].encode('utf-8').decode('unicode_escape')
         response = self.post(
             self.ROUTES.SEND_SMS,
             json=data,
