@@ -1,6 +1,6 @@
 from typing import Any
 
-from notification_service.clients.bsg import BSGProvider
+from notification_service.clients.sns import AWSSNSClient
 from notification_service.templates.sms import SMSTemplate
 
 
@@ -11,7 +11,7 @@ class SMSNotification:
 
     def __init__(self, values: dict[str, Any]):
         self.values = values
-        self.provider = BSGProvider()
+        self.provider = AWSSNSClient()
 
     def process_sms(self, destination: str) -> None:
         message = self.TEMPLATE.format(**self.values)
