@@ -1,3 +1,4 @@
+import asyncio
 from typing import Any
 
 from notification_service.templates.sms import SMSTemplate
@@ -14,4 +15,4 @@ class SMSNotification:
 
     def process_sms(self, destination: str) -> None:
         message = self.TEMPLATE.format(**self.values)
-        self.provider.send_sms(destination, message)
+        asyncio.run(self.provider.send_sms(destination, message))
