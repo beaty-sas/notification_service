@@ -11,5 +11,5 @@ class TelegramClient:
     def __init__(self):
         self.client = telegram.Bot(token=settings.TELEGRAM_BOT_TOKEN)
 
-    async def send_sms(self, destination: str, message: str) -> None:
+    def send_sms(self, destination: str, message: str) -> None:
         self.client.send_message(chat_id=destination, text=message)

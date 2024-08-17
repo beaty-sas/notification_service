@@ -10,8 +10,8 @@ class AWSSNSClient:
     def __init__(self):
         self.client = boto3.client('sns')
 
-    async def send_sms(self, destination: str, message: str) -> None:
-        await self.client.publish(
+    def send_sms(self, destination: str, message: str) -> None:
+        self.client.publish(
             PhoneNumber=destination,
             Message=message
         )
