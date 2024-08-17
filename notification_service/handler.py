@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 def handle_message(msg: Dict[str, Any]) -> None:
     message = SQSMessageSchema(**msg)
 
-    logger.info({'message': f'Start process sms to {message.destination}'})
+    logger.info({'message': f'Start process {message.provider} message to {message.destination}'})
 
     provider = providers.get(message.provider)
     if not provider:

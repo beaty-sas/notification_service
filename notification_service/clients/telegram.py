@@ -1,3 +1,4 @@
+import asyncio
 import logging
 
 import telegram
@@ -12,4 +13,4 @@ class TelegramClient:
         self.client = telegram.Bot(token=settings.TELEGRAM_BOT_TOKEN)
 
     def send_sms(self, destination: str, message: str) -> None:
-        self.client.send_message(chat_id=destination, text=message)
+        asyncio.run(self.client.send_message(chat_id=destination, text=message))
