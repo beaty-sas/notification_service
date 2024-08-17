@@ -11,5 +11,7 @@ class Settings(BaseSettings):
     BSG_API_KEY: str = ''
     BSG_SENDER_NAME: str = ''
 
+    TELEGRAM_BOT_TOKEN: str = ''
+
 
 settings = Settings()

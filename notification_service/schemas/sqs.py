@@ -1,10 +1,12 @@
+from typing import Any
+
 from pydantic import BaseModel
 
-from notification_service.schemas.sms import SMSPayloadSchema
+from notification_service.templates.sms import SMSTemplate
 
 
 class SQSMessageSchema(BaseModel):
-    """Income SQS message schema"""
-
-    send_sms: bool
-    sms_data: SMSPayloadSchema | None = None
+    destination: str
+    provider: str = 'sns'
+    template: SMSTemplate
+    values: dict[str, Any]

@@ -1,6 +1,5 @@
 from typing import Any
 
-from notification_service.clients.sns import AWSSNSClient
 from notification_service.templates.sms import SMSTemplate
 
 
@@ -9,9 +8,9 @@ class SMSNotification:
     VALUES: dict[str, list[str]]
     TEMPLATE: str
 
-    def __init__(self, values: dict[str, Any]):
+    def __init__(self, values: dict[str, Any], provider) -> None:
         self.values = values
-        self.provider = AWSSNSClient()
+        self.provider = provider()
 
     def process_sms(self, destination: str) -> None:
         message = self.TEMPLATE.format(**self.values)
